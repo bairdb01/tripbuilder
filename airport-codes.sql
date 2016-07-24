@@ -1,8 +1,7 @@
 
 CREATE TABLE IF NOT EXISTS iata_airport_codes (
   airport varchar(255) NOT NULL,
-  code varchar(4) NOT NULL,
-  PRIMARY KEY (airport, code)
+  code varchar(4) NOT NULL
 );
 
 
