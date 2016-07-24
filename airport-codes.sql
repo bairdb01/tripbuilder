@@ -10,14 +10,14 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 
 
-CREATE TABLE IF NOT EXISTS 'iata_airport_codes' (
-  'airport' varchar(255) NOT NULL,
-  'code' varchar(4) NOT NULL,
-  KEY 'airport' ('airport')
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS airports (
+ airport varchar(255) NOT NULL,
+ code varchar(4) NOT NULL,
+ PRIMARY KEY (airport)
+);
 
 
-INSERT INTO 'iata_airport_codes' ('airport', 'code') VALUES
+INSERT INTO airports (airport, code) VALUES
 ('Aalborg, Denmark ', 'AAL'),
 ('Aalesund, Norway ', 'AES'),
 ('Aarhus, Denmark - Bus service ', 'ZID'),
