@@ -1,11 +1,11 @@
 <?php
   class DbHandler {
-    private conn;
+    private $conn;
 
     function __construct(){
       require_once dirname(__FILE__) . "./DbConnect.php";
       // Open connection to database
-      db = new DbConnect();
+      $db = new DbConnect();
       $this->conn = $db->connect();
     }
 
