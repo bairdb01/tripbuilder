@@ -1,6 +1,8 @@
 <?php
   require_once './db/DbHandler.php';
 
+
+
   $db = new DbHandler();
   $result = $db->getFlightsByTrip(0);
 
