@@ -1652,8 +1652,7 @@
 "La Palma, Panama ", "PLP"
 "La Paz, Bolivia ", "LPB"
 "La Paz, Mexico ", "LAP"
-"La Rioja, Argentina ", "IRJ");
-INSERT INTO "iata_airport_codes" "airport", "code") VALUES
+"La Rioja, Argentina ", "IRJ"
 "La Romana, Dominican Republic ", "LRM"
 "La Ronge, SK ", "YVC"
 "La Serena, Chile ", "LSC"
