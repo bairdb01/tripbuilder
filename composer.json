@@ -1,0 +1,12 @@
+{
+    "name": "ben/trip_builder",
+    "description": "Travel agency API",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Ben Baird",
+            "email": "ben_baird05@hotmail.com"
+        }
+    ],
+    "require": {}
+}
