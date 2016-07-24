@@ -1,11 +1,7 @@
-
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
-
-
 CREATE TABLE IF NOT EXISTS airports (
  airport varchar(255) NOT NULL,
- code varchar(4) NOT NULL
+ code varchar(4) NOT NULL,
+ PRIMARY KEY (code)
 );
 
 
