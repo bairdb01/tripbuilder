@@ -8,5 +8,7 @@
             "email": "ben_baird05@hotmail.com"
         }
     ],
-    "require": {}
+    "require": {
+      "php": "^5.5.34"
+    }
 }
