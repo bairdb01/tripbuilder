@@ -10,14 +10,14 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 
 
-CREATE TABLE IF NOT EXISTS `iata_airport_codes` (
-  `airport` varchar(255) NOT NULL,
-  `code` varchar(4) NOT NULL,
-  KEY `airport` (`airport`)
+CREATE TABLE IF NOT EXISTS 'iata_airport_codes' (
+  'airport' varchar(255) NOT NULL,
+  'code' varchar(4) NOT NULL,
+  KEY 'airport' ('airport')
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-INSERT INTO `iata_airport_codes` (`airport`, `code`) VALUES
+INSERT INTO 'iata_airport_codes' ('airport', 'code') VALUES
 ('Aalborg, Denmark ', 'AAL'),
 ('Aalesund, Norway ', 'AES'),
 ('Aarhus, Denmark - Bus service ', 'ZID'),
@@ -1673,7 +1673,7 @@ INSERT INTO `iata_airport_codes` (`airport`, `code`) VALUES
 ('La Paz, Bolivia ', 'LPB'),
 ('La Paz, Mexico ', 'LAP'),
 ('La Rioja, Argentina ', 'IRJ');
-INSERT INTO `iata_airport_codes` (`airport`, `code`) VALUES
+INSERT INTO 'iata_airport_codes' ('airport', 'code') VALUES
 ('La Romana, Dominican Republic ', 'LRM'),
 ('La Ronge, SK ', 'YVC'),
 ('La Serena, Chile ', 'LSC'),
@@ -3268,7 +3268,7 @@ INSERT INTO `iata_airport_codes` (`airport`, `code`) VALUES
 ('Trang, Thailand ', 'TST'),
 ('Trapani, Italy ', 'TPS'),
 ('Traralgon, VI, Australia ', 'TGN');
-INSERT INTO `iata_airport_codes` (`airport`, `code`) VALUES
+INSERT INTO 'iata_airport_codes' ('airport', 'code') VALUES
 ('Traverse City, MI ', 'TVC'),
 ('Treasure Cay, Bahamas ', 'TCB'),
 ('Trelew, CB, Argentina ', 'REL'),
