@@ -14,7 +14,7 @@
     return $response;
   });
 
-  $app->map(['GET', 'PUT'], '/api/trips/{tripId}', function ($request, $response) use($app){
+  $app->get( '/api/trips/{tripId}', function ($request, $response) use($app){
     $db = new DbHandler();
     $route = $request->getAttribute('route');
     $tripId = $route->getArgument('tripId');

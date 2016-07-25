@@ -43,7 +43,8 @@
       return $this->resultToJSON($result);
     }
 
-    // Adds a flight to a trip; Returns false on failure
+    // Adds a flight to a trip;
+    // Returns flightId of the added flight; false on failure
     function addFlight($tripId, $start, $dest){
       $query = "INSERT INTO flights (tripId, start, dest)
                 VALUES ($tripId, '$start', '$dest')
@@ -52,7 +53,8 @@
       return $this->resultToJSON($result);
     }
 
-    // Removes a flight from a trip; Returns false on failure
+    // Removes a flight from a trip;
+    // Returns false on failure
     function removeFlight($tripId, $flightId) {
       $query = "DELETE FROM flights
                 WHERE tripId = $tripId AND
