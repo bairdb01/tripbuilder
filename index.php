@@ -6,7 +6,7 @@
 
   $db = new DbHandler();
 
-  $app = new \Slim\App;
+  $app = new \Slim\App();
 
   $app->get('/api/trip/edit/getAirports', function(Request $request, Response $response){
     $response = $app->response(200);
