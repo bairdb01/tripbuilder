@@ -40,7 +40,7 @@
   $app->post('api/trip/{tripId}/flight/', function ($request, $response) use($app){
     $db = new DbHandler();
     $route = $request->getAttribute('route');
-    $tripId = $route->getArgument('tripId');
+    $tripId = $route->getArgument('tripId');t
     $start = $request->getParsedBody()['start'];
     $dest = $request->getParsedBody()['dest'];
 
@@ -53,7 +53,7 @@
     return $response;
   });
 
-  $app->put('/api/trip/{tripId}/trip}', function ($request, $response) use($app){
+  $app->put('/api/trip/{tripId}/trip', function ($request, $response) use($app){
     $db = new DbHandler();
     $route = $request->getAttribute('route');
     $tripId = $route->getArgument('tripId');
