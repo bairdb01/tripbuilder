@@ -1,6 +1,6 @@
 <?php
-  require_once 'db/DbHandler.php';
-  require 'vendor/autoload.php';
+  require_once ('db/DbHandler.php');
+  require ('vendor/autoload.php');
 
   echo "Hello World";
 
