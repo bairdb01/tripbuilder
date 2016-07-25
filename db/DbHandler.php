@@ -9,6 +9,15 @@
       $this->conn = $db->connect();
     }
 
+    // Converts the database results to a standard array
+    function resultToJSON($result) {
+      $rows = [];
+      while ($row = pg_fetch_array($result, null, PGSQL_ASSOC)){
+          $rows = $row;
+      }
+      return json_encode($rows, JSON_PRETTY_PRINT);
+    }
+
     // Returns an array of all the airports alphabetically; False on failure
     function getAirports(){
       $query = "SELECT airport, code FROM iata_airport_codes
@@ -63,15 +72,6 @@
     // Close the database connection
     function closeConnection(){
       pg_close($this->conn);
-    }
-
-    // Converts the database results to a standard array
-    function resultToJSON($result) {
-      $rows = [];
-      while ($row = pg_fetch_array($result, null, PGSQL_ASSOC)){
-          $rows = $row;
-      }
-      return json_encode($rows, JSON_PRETTY_PRINT);
     }
   }
 ?>
