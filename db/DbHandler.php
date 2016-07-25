@@ -3,7 +3,7 @@
     private $conn;
 
     function __construct(){
-      require_once __DIR__ . "/DbConnect.php";
+      require_once __DIR__ . "db/DbConnect.php";
       // Open connection to database
       $db = new DbConnect();
       $this->conn = $db->connect();
