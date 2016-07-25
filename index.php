@@ -25,7 +25,7 @@
       $body = $response->getBody();
       $body->write($db->getTripName($tripId));
     // }
-      return $response
+      return $response;
     });
 
     $app->put('/api/trips/{tripId}/newName', function ($request, $resonse) use($app){
