@@ -15,12 +15,12 @@
     return $response;
   });
 
-  $app->get('/api/trip/edit/{tripId}', function (Request $request, Response $response) {
-    $response = $app->response(200);
-    $response["Content-Type"] = "application/json";
-    $response->body($db->getTripName((int)$args['tripId']));
-    return $response;
-  });
+  // $app->get('/api/trip/edit/{tripId}', function (Request $request, Response $response) {
+  //   $response = $app->response(200);
+  //   $response["Content-Type"] = "application/json";
+  //   $response->body($db->getTripName((int)$args['tripId']));
+  //   return $response;
+  // });
 
   $app->run();
 ?>
