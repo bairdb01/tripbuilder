@@ -6,7 +6,7 @@
 
   $db = new DbHandler();
   $result = $db->getAirports();
-
+  echo pg_num_rows($result);
   // echo "<table>\n";
   while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)){
     // echo "\t<tr>\n";
