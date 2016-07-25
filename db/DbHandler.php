@@ -14,7 +14,7 @@
       $rows = [];
       while ($row = pg_fetch_array($result, null, PGSQL_ASSOC)){
         foreach ($row as $col_val)
-          $rows[][] .= $col_val;
+          $rows[] .= $col_val;
       }
       return json_encode($rows, JSON_PRETTY_PRINT);
     }
