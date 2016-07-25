@@ -39,6 +39,7 @@
     return $response;
   });
 
+
   $app->any('/api/trip/{tripId}/flight', function ($request, $response) use($app){
     $db = new DbHandler();
     if ($response->getMethod() == 'GET') {
@@ -53,11 +54,11 @@
     } else if ($response->getMethod() == 'POST'){
       // Add a flight to a trip
       $route = $request->getAttribute('route');
-      $tripId = $route->getArgument('tripId');t
+      $tripId = $route->getArgument('tripId');
       $start = $request->getParsedBody()['start'];
       $dest = $request->getParsedBody()['dest'];
 
-      $newHeader = $response->withHeader('Content-type', 'text/html');
+      $newHeader = $response->withHeader('Content-type', 'application/json');
       $body = $response->getBody();
       $result = $db->addFlight($tripId, $start, $dest);
 
