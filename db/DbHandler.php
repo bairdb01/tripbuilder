@@ -55,7 +55,7 @@
     // Returns True on successful update of a tripname
     function updateTripName($tripId, $name){
       $query = "UPDATE trips SET name = '$name'
-                WHERE tripId = $tripId";
+                WHERE id = $tripId";
       $result = pg_query($this->conn, $query);
       return $result;
     }
