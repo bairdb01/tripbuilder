@@ -12,7 +12,7 @@
     // Converts the database results to a standard array
     function resultToJSON($result) {
       $rows = array();
-      while ($row = pg_fetch_array($result)){
+      while ($row = pg_fetch_assoc($result)){
           $rows[] = $row;
       }
       return json_encode($rows, JSON_PRETTY_PRINT);
