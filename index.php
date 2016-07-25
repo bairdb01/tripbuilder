@@ -6,6 +6,7 @@
 
   $db = new DbHandler();
   $db->addFlight(3, "rome", "brussels");
+  echo pg_last_error();
   $result = $db->getFlights(3);
   echo "</br>";
   echo pg_num_rows($result);
