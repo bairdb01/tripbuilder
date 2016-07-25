@@ -14,7 +14,7 @@
     return $response;
   });
 
-  $app->any('/api/trip/{tripId}', function ($request, $response) use($app){
+  $app->any('/api/trips/{tripId}', function ($request, $response) use($app){
     $db = new DbHandler();
     if ($request->getMethod() == 'GET') {
       // Retrieve the tripname
@@ -40,10 +40,10 @@
   });
 
 
-  $app->any('/api/trip/{tripId}/flight', function ($request, $response) use($app){
+  $app->map(['GET', 'POST']'/api/trips/{tripId}/flights', function ($request, $response) use($app){
     $db = new DbHandler();
     if ($response->getMethod() == 'GET') {
-      // Retrieve all flights for a trip
+      // Retrieve list of flights for a trip
       $route = $request->getAttribute('route');
       $tripId = $route->getArgument('tripId');
 
@@ -61,17 +61,20 @@
       $newHeader = $response->withHeader('Content-type', 'application/json');
       $body = $response->getBody();
       $result = $db->addFlight($tripId, $start, $dest);
-
-    } else if ($response->getMethod() == 'DELETE') {
-      // Delete a flight from a trip
-      $route = $request->getAttribute('route');
-      $tripId = $route->getArgument('tripId');
-      $flightId = $request->getParsedBody()['tripName'];
-
-      $newHeader = $response->withHeader('Content-type', 'application/json');
-      $body = $response->getBody();
-      $body->write($db->removeFlight($tripId, $flightId));
     }
+    return $response;
+  }
+
+  $app->delete('/api/trip/{tripId}/flights/{flightId}', function ($request, $response) use($app){
+    // Delete a flight from a trip
+    $db = new DbHandler();
+    $route = $request->getAttribute('route');
+    $tripId = $route->getArgument('tripId');
+    $flightId = $route->getArgument('flightId');
+
+    $newHeader = $response->withHeader('Content-type', 'application/json');
+    $body = $response->getBody();
+    $body->write($db->removeFlight($tripId, $flightId));
 
     return $response;
   });

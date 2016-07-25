@@ -36,7 +36,7 @@
 
     // Returns flights which correspond with a trip id; False on failure
     function getFlights($tripId) {
-      $query = "SELECT start, dest FROM flights
+      $query = "SELECT flightId, start, dest FROM flights
                 WHERE tripId = $tripId
                 ORDER BY flightId";
       $result = pg_query($this->conn, $query);
