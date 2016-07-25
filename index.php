@@ -62,7 +62,7 @@
       $result = $db->addFlight($tripId, $start, $dest);
     }
     return $response;
-  }
+  });
 
   $app->delete('/api/trip/{tripId}/flights/{flightId}', function ($request, $response) use($app){
     // Delete a flight from a trip
