@@ -14,33 +14,25 @@
     return $response;
   });
 
-  $app->get( '/api/trips/{tripId}', function ($request, $response) use($app){
+  $app->map(['GET', 'PUT'], '/api/trips/{tripId}', function ($request, $response) use($app){
     $db = new DbHandler();
     $route = $request->getAttribute('route');
     $tripId = $route->getArgument('tripId');
 
-    // if ($request->getMethod() == 'GET') {
+    if ($request->getMethod() == 'GET') {
       // Retrieve the tripname
       $newHeader = $response->withHeader('Content-type', 'application/json');
       $body = $response->getBody();
       $body->write($db->getTripName($tripId));
-    // }
-      return $response;
-    });
 
-    $app->put('/api/trips/{tripId}/newName', function ($request, $response) use($app){
-    // } else if ($request->getMethod() == 'PUT') {
-      $db = new DbHandler();
-      $route = $request->getAttribute('route');
-      $tripId = $route->getArgument('tripId');
-
+    } else if ($request->getMethod() == 'PUT') {
       // Update the tripname
       $tripName = $request->getParsedBody()['tripName'];
 
       $newHeader = $response->withHeader('Content-type', 'application/json');
       $body = $response->getBody();
       $db->setTripName($tripId, $tripName);
-    // }
+    }
     return $response;
   });
 
