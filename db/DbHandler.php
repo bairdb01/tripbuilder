@@ -46,7 +46,8 @@
     // Adds a flight to a trip; Returns false on failure
     function addFlight($tripId, $start, $dest){
       $query = "INSERT INTO flights (tripId, start, dest)
-                VALUES ($tripId, '$start', '$dest')";
+                VALUES ($tripId, '$start', '$dest')
+                RETURNING flightid";
       $result = pg_query($this->conn, $query);
       return $this->resultToJSON($result);
     }
