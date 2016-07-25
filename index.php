@@ -3,18 +3,19 @@
   require 'vendor/autoload.php';
 
   echo "Hello World";
-  
+
   $db = new DbHandler();
   $result = $db->getAirports();
 
-  echo "<table>\n";
+  // echo "<table>\n";
   while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)){
-    echo "\t<tr>\n";
+    // echo "\t<tr>\n";
     foreach ($line as $col_value) {
-      echo "\t\t<td>$col_value</td>\n";
+      // echo "\t\t<td>$col_value</td>\n";
+      echo $col_value;
     }
-    echo "\t<tr>\n";
+    // echo "\t<tr>\n";
   }
-  echo "</table>\n";
+  // echo "</table>\n";
   pg_free_result($result);
 ?>
