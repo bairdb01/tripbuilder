@@ -5,7 +5,7 @@
   echo "Hello World";
 
   $db = new DbHandler();
-  $result = $db->getTripName("ben", 3);
+  $result = $db->getTripName('ben', 3);
   echo "\n";
   echo pg_num_rows($result);
   echo "\n";
