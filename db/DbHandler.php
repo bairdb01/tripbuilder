@@ -43,7 +43,9 @@
         "dest"=>$dest
       );
 
-      return pg_insert($this->conn, "flights", $row);
+      pg_insert($this->conn, "flights", $row);
+      echo pg_last_error();
+      return;
     }
 
     // Returns True on successful removal
@@ -62,6 +64,11 @@
         "tripId"=>$tripId
       );
       return pg_update($this->conn, "trips", $newName, $condition);
+    }
+
+    // Close the database connection
+    function closeConnection(){
+      pg_close($this->conn);
     }
   }
 ?>
