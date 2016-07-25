@@ -52,7 +52,7 @@
                       flightId = $flightId";
       $result = pg_query($this->conn, $query);
       $result = successJSON($result);
-      return $this->resultToJSON($result);
+      return json_encode($result, JSON_PRETTY_PRINT);;
     }
 
     // Updates a trips name; Returns false on failure
@@ -61,7 +61,7 @@
                 WHERE id = $tripId";
       $result = pg_query($this->conn, $query);
       $result = successJSON($result);
-      return $this->resultToJSON($result);
+      return json_encode($result, JSON_PRETTY_PRINT);;
     }
 
     // Converts the database results to a standard array
