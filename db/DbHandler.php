@@ -43,10 +43,7 @@
         "dest"=>$dest
       );
 
-      echo $row["tripId"];
-      $res = pg_insert($this->conn, "flights", $row);
-      echo $res;
-      return;
+      return pg_insert($this->conn, "flights", $row);
     }
 
     // Returns True on successful removal
