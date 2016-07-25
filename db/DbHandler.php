@@ -38,14 +38,12 @@
     // Returns True on successful add
     function addFlight($tripId, $start, $dest){
       $row = array(
-        "tripId"=>$tripId,
-        "start"=>$start,
-        "dest"=>$dest
+        'tripId'=>$tripId,
+        'start'=>$start,
+        'dest'=>$dest
       );
 
-      pg_insert($this->conn, "flights", $row);
-      echo pg_last_error();
-      return;
+      return pg_insert($this->conn, "flights", $row);
     }
 
     // Returns True on successful removal
