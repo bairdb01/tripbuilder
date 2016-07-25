@@ -12,8 +12,8 @@
     // Returns a trip's name based on a given user id and trip id
     function getTripName($owner, $tripId) {
       $query = "SELECT name FROM trips
-                WHERE trips.id = $id and
-                      trips.owner = $owner";
+                WHERE trips.id = $tripId and
+                      trips.owner = '$owner'";
       $result = pg_query($query)
         or die('Query failed: ' . pg_last_error());
       return $result;
