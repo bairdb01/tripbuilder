@@ -34,7 +34,7 @@
         "tripId"=>$tripId,
         "start"=>$start,
         "dest"=>$dest
-      )
+      );
       return pg_insert($db, "flights", $row);
     }
 
