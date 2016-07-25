@@ -9,8 +9,9 @@
   $app = new \Slim\App();
 
   $app->get('/api/trip/edit/getAirports', function($request, $response) use($app){
-    // $response["Content-Type"] = "application/json";
-    $body = $response->withJson($db->getAirports());
+
+    $newHeader = $response->withHeader('Content-type', 'application/json')
+    $body = $response->write($db->getAirports());
     return $response;
   });
 
