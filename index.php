@@ -41,7 +41,7 @@
     $db = new DbHandler();
     $parsedBody = $request->getParsedBody();
     parse_str($parsedBody);
-
+    echo $start . $dest;
     $newHeader = $response->withHeader('Content-type', 'application/json');
     $body = $response->getBody();
     $body->write($db->addFlight($tripId, $start, $dest));
