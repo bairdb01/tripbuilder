@@ -61,7 +61,7 @@
     }
 
     // Updates a trips name; Returns false on failure
-    function updateTripName($tripId, $name){
+    function setTripName($tripId, $name){
       $query = "UPDATE trips SET name = '$name'
                 WHERE id = $tripId";
       $result = pg_query($this->conn, $query);
