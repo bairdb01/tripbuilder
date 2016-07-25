@@ -75,10 +75,10 @@
 
     function successJSON($result){
       $val = array();
-      $val[] = ($result ? true : false);
+      $val["success"] = ($result) ? true : false;
       return $val;
     }
-    
+
     // Close the database connection
     function closeConnection(){
       pg_close($this->conn);
