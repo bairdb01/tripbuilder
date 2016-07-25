@@ -70,9 +70,8 @@
       $rows = [];
       while ($row = pg_fetch_array($result, null, PGSQL_ASSOC)){
           $rows = $row;
-        }
       }
       return json_encode($rows);
-      // return $rows;
+    }
   }
 ?>
