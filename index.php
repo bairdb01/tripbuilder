@@ -5,17 +5,19 @@
   echo "Hello World";
 
   $db = new DbHandler();
+  $results = $db->getAirports();
+  echo $results;
 
-  $app = new \Slim\App;
+  // $app = new \Slim\App;
 
-  $app->get('/api/getAirports', function(Request $request, Response $response){
-    $response = $app->response();
-    $response["Content-Type"] = "application/json";
-    $response->body($db->getAirports());
-  });
+  // $app->get('/api/getAirports', function(Request $request, Response $response){
+  //   $response = $app->response();
+  //   $response["Content-Type"] = "application/json";
+  //   $response->body($db->getAirports());
+  // });
 
   // $app->get('/api/trip/edit/{tripId}', function (Request $request, Response $response) {
   //
   // });
-  $app->run();
+  // $app->run();
 ?>
