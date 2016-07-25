@@ -9,19 +9,18 @@
       $this->conn = $db->connect();
     }
 
-    // Returns a trip based on a given id
-    function getTrip(int $id) {
-      // Performing a query
-      $query = "SELECT * FROM trips
-                WHERE trips.id = $id";
+    // Returns a trip's name based on a given user id and trip id
+    function getTripName($owner, $tripId) {
+      $query = "SELECT name FROM trips
+                WHERE trips.id = $id" and
+                      trips.owner = $owner;
       $result = pg_query($query)
         or die('Query failed: ' . pg_last_error());
       return $result;
     }
 
     // Returns flights which correspond with a trip id
-    function getFlightsByTrip(int $tripId) {
-      // Performing a query
+    function getFlights($tripId) {
       $query = "SELECT * FROM flights
                 INNER JOIN trips on flights.tripId = $tripId";
       $result = pg_query($query)
@@ -29,5 +28,41 @@
       return $result;
     }
 
+    // Returns True on successful add
+    function addFlight($tripId, $start, $dest){
+      $row = (
+        "tripId"=>$tripId,
+        "start"=>$start,
+        "dest"=>$dest
+      )
+      return pg_insert($db, "flights", $row)
+    }
+
+    // Returns True on successful removal
+    function removeFlight($tripId, $flightId) {
+      $row = (
+        "tripId"=>$tripId,
+        "flightId"=>$flightId
+      );
+      return pg_delete($db, "flights", $row);
+    }
+
+    // Returns True on successful update of a tripname
+    function updateTripName($tripId, $name){
+      $newName = ("name"=>$name);
+      $condition = (
+        "tripId"=>$tripId,
+      );
+      return pg_update($db, "trips", $newName, $condition);
+    }
+
+    // Returns an array of all the airports alphabetically
+    function getAirports(){
+      $query = "SELECT airport FROM iata_airport_codes
+                ORDER BY airport"
+      $result = pg_query($query)
+        or die('Query failed: ' . pg_last_error());
+      return $result;
+    }
   }
 ?>

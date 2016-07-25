@@ -1,0 +1,12 @@
+A airlines trip planner API, which supports the following:
+  - Gets a list of all airports (Alphabetically)
+  - List all flights for a trip
+  - Add a flight to a trip
+  - Remove a flight from a trip
+  - Rename a trip
+
+API uses PHP, PgSQL, Composer, and the Slim framework.  
+
+
+Airport Names + Codes Database from:
+http://www.codediesel.com/data/international-airport-codes-download/

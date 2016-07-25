@@ -1,10 +1,10 @@
 <?php
   require_once './db/DbHandler.php';
-
+  require 'vendor/autoload.php';
 
 
   $db = new DbHandler();
-  $result = $db->getFlightsByTrip(0);
+  $result = $db->getAirports();
 
   echo "<table>\n";
   while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)){
@@ -16,5 +16,4 @@
   }
   echo "</table>\n";
   pg_free_result($result);
-  pg_close($db->conn);
 ?>
