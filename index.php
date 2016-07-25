@@ -19,21 +19,28 @@
     $route = $request->getAttribute('route');
     $tripId = $route->getArgument('tripId');
 
-    if ($request->getMethod() == 'GET') {
+    // if ($request->getMethod() == 'GET') {
       // Retrieve the tripname
       $newHeader = $response->withHeader('Content-type', 'application/json');
       $body = $response->getBody();
       $body->write($db->getTripName($tripId));
+    // }
+      return $response
+    });
 
-    } else if ($request->getMethod() == 'PUT') {
+    $app->put('/api/trips/{tripId}/newName', function ($request, $resonse) use($app){
+    // } else if ($request->getMethod() == 'PUT') {
+      $db = new DbHandler();
+      $route = $request->getAttribute('route');
+      $tripId = $route->getArgument('tripId');
+
       // Update the tripname
       $tripName = $request->getParsedBody()['tripName'];
 
       $newHeader = $response->withHeader('Content-type', 'application/json');
       $body = $response->getBody();
       $body->write($db->setTripName($tripId, $tripName));
-    }
-
+    // }
     return $response;
   });
 
