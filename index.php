@@ -5,52 +5,17 @@
   echo "Hello World";
 
   $db = new DbHandler();
-  $result = $db->getTripName("ben", 3);
 
-  echo "<table>";
-  while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)){
-    echo "<tr>";
-    foreach($line as $col_val){
-      echo "<td>";
-      echo $col_val;
-      echo "</td></br>";
-    }
-    echo "</tr>";
-  }
-  echo "</table>";
+  $app = new \Slim\App;
 
-  $db->removeFlight(3, 7);
+  $app->get('/api/getAirports', function(Request $request, Response $response){
+    $response = $app->response();
+    $response["Content-Type"] = "application/json";
+    $response->body($db->getAirports());
+  });
 
-  $db->updateTripName(3, "New Trip");
-  $result = $db->getTripName("ben", 3);
-
-  echo "<table>";
-  while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)){
-    echo "<tr>";
-    foreach($line as $col_val){
-      echo "<td>";
-      echo $col_val;
-      echo "</td></br>";
-    }
-    echo "</tr>";
-  }
-  echo "</table>";
-
-  $result = $db->getFlights(3);
-  echo "</br>";
-  echo pg_num_rows($result);
-  echo "</br>";
-
-  echo "<table>";
-  while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)){
-    echo "<tr>";
-    foreach($line as $col_val){
-      echo "<td>";
-      echo $col_val;
-      echo "</td></br>";
-    }
-    echo "</tr>";
-  }
-  echo "</table>";
-  pg_free_result($result);
+  // $app->get('/api/trip/edit/{tripId}', function (Request $request, Response $response) {
+  //
+  // });
+  $app->run();
 ?>
