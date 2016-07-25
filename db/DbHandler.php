@@ -49,7 +49,7 @@
 
     // Returns True on successful update of a tripname
     function updateTripName($tripId, $name){
-      $newName = ("name"=>$name);
+      $newName = array("name"=>$name);
       $condition = array(
         "tripId"=>$tripId
       );
@@ -59,7 +59,7 @@
     // Returns an array of all the airports alphabetically
     function getAirports(){
       $query = "SELECT airport FROM iata_airport_codes
-                ORDER BY airport"
+                ORDER BY airport";
       $result = pg_query($query)
         or die('Query failed: ' . pg_last_error());
       return $result;
