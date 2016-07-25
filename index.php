@@ -14,7 +14,7 @@
     return $response;
   });
 
-  $app->any('/api/trip/{tripId}/trip', function ($request, $response) use($app){
+  $app->any('/api/trip/{tripId}', function ($request, $response) use($app){
     $db = new DbHandler();
     if ($request->getMethod() == 'GET') {
       // Retrieve the tripname
