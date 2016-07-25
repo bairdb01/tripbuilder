@@ -37,12 +37,10 @@
   });
 
 
-  $app->post('api/trip/{tripId}/flight/?start={start}&end={dest}', function ($request, $response) use($app){
+  $app->post('api/trip/{tripId}/flight/', function ($request, $response) use($app){
     $db = new DbHandler();
-    $route = $request->getAttribute('route');
-    $tripId = $route->getArgument('tripId');
-    $start = $route->getArgument('start');
-    $dest = $route->getArgument('dest');
+    $parsedBody = $request->getParsedBody();
+    parse_str($parsedBody);
 
     $newHeader = $response->withHeader('Content-type', 'application/json');
     $body = $response->getBody();
