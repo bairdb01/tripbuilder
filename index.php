@@ -9,7 +9,7 @@
   $app->get('/api/trip/edit/getAirports', function($request, $response) use($app){
     $db = new DbHandler();
     $newHeader = $response->withHeader('Content-type', 'application/json');
-    $body = $response->getBody()
+    $body = $response->getBody();
     body->write($db->getAirports());
     return $response;
   });
