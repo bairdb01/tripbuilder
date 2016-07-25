@@ -6,7 +6,7 @@
 
   $db = new DbHandler();
   $results = $db->getAirports();
-  echo "<pre>"$results"</pre>";
+  echo $results;
 
   // $app = new \Slim\App;
 
