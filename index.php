@@ -19,10 +19,10 @@
   }
   echo "</table>";
 
-  $db->removeFlight(3, 6);
+  $db->removeFlight(3, 7);
 
   $db->updateTripName(3, "New Trip");
-  $result = $db->getTripName(3);
+  $result = $db->getTripName("ben", 3);
 
   echo "<table>";
   while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)){
