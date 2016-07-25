@@ -41,9 +41,8 @@
     $db = new DbHandler();
     $route = $request->getAttribute('route');
     $tripId = $route->getArgument('tripId');
-    $locations[] = $parsedBody = $request->getParsedBody();
+    $locations = $request->getParsedBody();
 
-    echo $locations[0];
 
     $newHeader = $response->withHeader('Content-type', 'text/html');
     $body = $response->getBody();
@@ -54,7 +53,7 @@
     return $response;
   });
 
-  $app->put('/api/trip/{tripId}/newTripName', function ($request, $response) use($app){
+  $app->put('/api/trip/{tripId}/newTripName/{tripName}', function ($request, $response) use($app){
     $db = new DbHandler();
     $route = $request->getAttribute('route');
     $tripId = $route->getArgument('tripId');
@@ -66,7 +65,7 @@
     return $response;
   });
 
-  $app->delete('/api/trip/{tripId}/removeFlight', function ($request, $response) use($app){
+  $app->delete('/api/trip/{tripId}/removeFlight/{flightId}', function ($request, $response) use($app){
     $db = new DbHandler();
     $route = $request->getAttribute('route');
     $tripId = $route->getArgument('tripId');
