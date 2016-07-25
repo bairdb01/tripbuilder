@@ -60,7 +60,7 @@
     function getAirports(){
       $query = "SELECT airport FROM iata_airport_codes
                 ORDER BY airport";
-      $result = pg_query($query)
+      $result = pg_query($query);
       if (!$result) {
         echo "An error has occured";
       }
