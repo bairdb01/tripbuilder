@@ -14,7 +14,7 @@
     return $response;
   });
 
-  $app->get('/api/trip/edit/{tripId}', function ($request, $response) use($app){
+  $app->get('/api/trip/{tripId}/getTripName', function ($request, $response) use($app){
     $db = new DbHandler();
     $route = $request->getAttribute('route');
     $tripId = $route->getArgument('tripId');
@@ -24,6 +24,18 @@
     $body->write($db->getTripName($tripId));
     return $response;
   });
+
+  $app->get('/api/trip/{tripId}/getFlights', function ($request, $response) use($app){
+    $db = new DbHandler();
+    $route = $request->getAttribute('route');
+    $tripId = $route->getArgument('tripId');
+
+    $newHeader = $response->withHeader('Content-type', 'application/json');
+    $body = $response->getBody();
+    $body->write($db->getFlights($tripId));
+    return $response;
+  });
+  getFlights
 
   $app->run();
 ?>
