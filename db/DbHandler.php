@@ -13,7 +13,7 @@
     function getAirports(){
       $query = "SELECT airport FROM iata_airport_codes
                 ORDER BY airport";
-      $result = pg_query($query);
+      $result = pg_query($this->conn, $query);
       return $result;
     }
 
@@ -22,7 +22,7 @@
       $query = "SELECT name FROM trips
                 WHERE trips.id = $tripId and
                       trips.owner = '$owner'";
-      $result = pg_query($query);
+      $result = pg_query($this->conn, $query);
       return $result;
     }
 
@@ -31,42 +31,33 @@
       $query = "SELECT start, dest FROM flights
                 WHERE tripId = $tripId
                 ORDER BY flightId";
-      $result = pg_query($query);
+      $result = pg_query($this->conn, $query);
       return $result;
     }
 
     // Returns True on successful add
     function addFlight($tripId, $start, $dest){
-      // $row = array(
-      //   "tripId"=>$tripId,
-      //   "start"=>$start,
-      //   "dest"=>$dest
-      // );
       $query = "INSERT INTO flights (tripId, start, dest)
                 VALUES ($tripId, '$start', '$dest')";
-      $result = pg_query($query);
+      $result = pg_query($this->conn, $query);
       return $result;
-      // pg_insert($this->conn, "flights", $row);
-      // echo pg_last_error($this->conn);
-      // return;
     }
 
     // Returns True on successful removal
     function removeFlight($tripId, $flightId) {
-      $row = array(
-        "tripId"=>$tripId,
-        "flightId"=>$flightId
-      );
-      return pg_delete($this->conn, "flights", $row);
+      $query = "DELETE FROM flights
+                WHERE tripdId = $tripId AND
+                      flightId = $flightId";
+      $result = pg_query($this->conn, $query);
+      return $result;
     }
 
     // Returns True on successful update of a tripname
     function updateTripName($tripId, $name){
-      $newName = array("name"=>$name);
-      $condition = array(
-        "tripId"=>$tripId
-      );
-      return pg_update($this->conn, "trips", $newName, $condition);
+      $query = "UPDATE trips SET name = '$name'
+                WHERE tripId = $tripId";
+      $result = pg_query($this->conn, $query);
+      return $result;
     }
 
     // Close the database connection
