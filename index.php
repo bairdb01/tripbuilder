@@ -8,7 +8,7 @@
 
   $app = new \Slim\App();
 
-  $app->get('/api/trip/edit/getAirports', function(Request $request, Response $response){
+  $app->get('/api/trip/edit/getAirports', function($request, $response){
     $response = $app->response(200);
     $response["Content-Type"] = "application/json";
     $response->body($db->getAirports());
