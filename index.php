@@ -58,7 +58,7 @@
     $db = new DbHandler();
     $route = $request->getAttribute('route');
     $tripId = $route->getArgument('tripId');
-    $tripName = $route->getArgument('tripName')
+    $tripName = $route->getArgument('tripName');
 
     $newHeader = $response->withHeader('Content-type', 'application/json');
     $body = $response->getBody();
@@ -66,6 +66,17 @@
     return $response;
   });
 
+  $app->delete('/api/trip/{tripId}/removeFlight', function ($request, $response) use($app){
+    $db = new DbHandler();
+    $route = $request->getAttribute('route');
+    $tripId = $route->getArgument('tripId');
+    $flightId = $route->getArgument('flightId');
+
+    $newHeader = $response->withHeader('Content-type', 'application/json');
+    $body = $response->getBody();
+    $body->write($db->removeFlight($tripId, $flightId));
+    return $response;
+  });
 
 
 
