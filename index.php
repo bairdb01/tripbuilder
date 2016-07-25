@@ -41,11 +41,11 @@
     $db = new DbHandler();
     $route = $request->getAttribute('route');
     $tripId = $route->getArgument('tripId');
-    $parsedBody = $request->getParsedBody();
+    $locations[] = $parsedBody = $request->getParsedBody();
 
     $newHeader = $response->withHeader('Content-type', 'application/json');
     $body = $response->getBody();
-    $body->write($db->addFlight($tripId, $start, $dest));
+    $body->write($db->addFlight($tripId, $locations[0], $locations[1]));
     return $response;
   });
   $app->run();
