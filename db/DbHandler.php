@@ -44,7 +44,7 @@
       );
 
       echo $row["tripId"];
-      $res = pg_insert($this->conn, "flights", $rows);
+      $res = pg_insert($this->conn, "flights", $row);
       echo $res;
       return;
     }
