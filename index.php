@@ -38,14 +38,15 @@
 
 
   $app->post('api/trip/{tripId}/addFlight/', function ($request, $response) use($app){
+    $locations = array();
     $db = new DbHandler();
     $parsedBody = $request->getParsedBody();
-    parse_str($parsedBody);
-    echo $start . $dest;
-    // $newHeader = $response->withHeader('Content-type', 'application/json');
+    parse_str($parsedBody, $locations);
+
+
+    $newHeader = $response->withHeader('Content-type', 'application/json');
     $body = $response->getBody();
-    // $body->write($db->addFlight($tripId, $start, $dest));
-    $body->write($start);
+    $body->write($db->addFlight($tripId, $locations[0], $locations[1]));
     return $response;
   });
   $app->run();
