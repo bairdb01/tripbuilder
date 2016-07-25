@@ -14,21 +14,19 @@
     return $response;
   });
 
-  $app->any('/api/trips/{tripId}', function ($request, $response) use($app){
+  $app->map(['GET', 'PUT'], '/api/trips/{tripId}', function ($request, $response) use($app){
     $db = new DbHandler();
+    $route = $request->getAttribute('route');
+    $tripId = $route->getArgument('tripId');
+
     if ($request->getMethod() == 'GET') {
       // Retrieve the tripname
-      $route = $request->getAttribute('route');
-      $tripId = $route->getArgument('tripId');
-
       $newHeader = $response->withHeader('Content-type', 'application/json');
       $body = $response->getBody();
       $body->write($db->getTripName($tripId));
 
     } else if ($request->getMethod() == 'PUT') {
       // Update the tripname
-      $route = $request->getAttribute('route');
-      $tripId = $route->getArgument('tripId');
       $tripName = $request->getParsedBody()['tripName'];
 
       $newHeader = $response->withHeader('Content-type', 'application/json');
@@ -55,19 +53,17 @@
 
   $app->map(['GET', 'POST'], '/api/trips/{tripId}/flights', function ($request, $response) use($app){
     $db = new DbHandler();
+    $route = $request->getAttribute('route');
+    $tripId = $route->getArgument('tripId');
+
     if ($request->getMethod() == 'GET') {
       // Retrieve list of flights for a trip
-      $route = $request->getAttribute('route');
-      $tripId = $route->getArgument('tripId');
-
       $newHeader = $response->withHeader('Content-type', 'application/json');
       $body = $response->getBody();
       $body->write($db->getFlights($tripId));
 
     } else if ($request->getMethod() == 'POST'){
       // Add a flight to a trip
-      $route = $request->getAttribute('route');
-      $tripId = $route->getArgument('tripId');
       $start = $request->getParsedBody()['start'];
       $dest = $request->getParsedBody()['dest'];
 
