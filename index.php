@@ -43,6 +43,8 @@
     $tripId = $route->getArgument('tripId');
     $locations[] = $parsedBody = $request->getParsedBody();
 
+    echo $locations[0];
+
     $newHeader = $response->withHeader('Content-type', 'text/html');
     $body = $response->getBody();
     $result = $db->addFlight($tripId, $locations[0], $locations[1]);
