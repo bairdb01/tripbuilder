@@ -14,7 +14,7 @@
     return $response;
   });
 
-  $app->get('/api/trip/edit/{tripId}', function (Request $request, Response $response) {
+  $app->get('/api/trip/edit/{tripId}', function (Request $request, Response $response) use($app){
     $db = new DbHandler();
     $route = $request->getAttribute('route');
     $tripId = $route->getArgument('tripId');
