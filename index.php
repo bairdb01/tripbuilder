@@ -2,7 +2,8 @@
   require_once './db/DbHandler.php';
   require 'vendor/autoload.php';
 
-
+  echo "Hello World";
+  
   $db = new DbHandler();
   $result = $db->getAirports();
 

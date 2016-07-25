@@ -13,7 +13,7 @@
     function getTripName($owner, $tripId) {
       $query = "SELECT name FROM trips
                 WHERE trips.id = $id and
-                      trips.owner = $owner";
+                      trips.owner = $owner"g;
       $result = pg_query($query)
         or die('Query failed: ' . pg_last_error());
       return $result;
@@ -30,29 +30,20 @@
 
     // Returns True on successful add
     function addFlight($tripId, $start, $dest){
-      $row = (
-        "tripId"=>$tripId,
-        "start"=>$start,
-        "dest"=>$dest
-      )
+      $row = ("tripId"=>$tripId, "start"=>$start, "dest"=>$dest)
       return pg_insert($db, "flights", $row)
     }
 
     // Returns True on successful removal
     function removeFlight($tripId, $flightId) {
-      $row = (
-        "tripId"=>$tripId,
-        "flightId"=>$flightId
-      );
+      $row = ("tripId"=>$tripId, "flightId"=>$flightId);
       return pg_delete($db, "flights", $row);
     }
 
     // Returns True on successful update of a tripname
     function updateTripName($tripId, $name){
       $newName = ("name"=>$name);
-      $condition = (
-        "tripId"=>$tripId,
-      );
+      $condition = ("tripId"=>$tripId);
       return pg_update($db, "trips", $newName, $condition);
     }
 
