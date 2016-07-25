@@ -65,11 +65,11 @@
     return $response;
   });
 
-  $app->delete('/api/trip/{tripId}/removeFlight/{flightId}', function ($request, $response) use($app){
+  $app->delete('/api/trip/{tripId}/flight', function ($request, $response) use($app){
     $db = new DbHandler();
     $route = $request->getAttribute('route');
     $tripId = $route->getArgument('tripId');
-    $flightId = $route->getArgument('flightId');
+    $flightId = $request->getParsedBody()['tripName'];
 
     $newHeader = $response->withHeader('Content-type', 'application/json');
     $body = $response->getBody();
