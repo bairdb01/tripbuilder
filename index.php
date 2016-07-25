@@ -14,12 +14,16 @@
     return $response;
   });
 
-  // $app->get('/api/trip/edit/{tripId}', function (Request $request, Response $response) {
-  //   $response = $app->response(200);
-  //   $response["Content-Type"] = "application/json";
-  //   $response->body($db->getTripName((int)$args['tripId']));
-  //   return $response;
-  // });
+  $app->get('/api/trip/edit/{tripId}', function (Request $request, Response $response) {
+    $db = new DbHandler();
+    $route = $request->getAttribute('route');
+    $tripId = $route->getArgument('tripId');
+
+    $newHeader = $response->withHeader('Content-type', 'application/json');
+    $body = $response->getBody();
+    $body->write($db->getTripName($tripId));
+    return $response;
+  });
 
   $app->run();
 ?>
