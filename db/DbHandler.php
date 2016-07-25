@@ -43,7 +43,7 @@
         'dest'=>$dest
       );
 
-      return pg_insert($this->conn, "flights", $row);
+      return pg_insert($this->conn, "flights", pg_convert($this->conn,"flights",$row));
     }
 
     // Returns True on successful removal
