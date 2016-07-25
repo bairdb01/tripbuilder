@@ -9,7 +9,8 @@
   echo pg_num_rows($result);
 
   while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)){
-    echo $line[0]\n;
+    echo $line[0];
+    echo"\n";
   }
   pg_free_result($result);
 ?>
