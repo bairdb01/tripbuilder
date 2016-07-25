@@ -11,6 +11,7 @@
     $newHeader = $response->withHeader('Content-type', 'application/json');
     $body = $response->getBody();
     $body->write($db->getAirports());
+    $db->closeConnection();
     return $response;
   });
 
@@ -27,12 +28,15 @@
 
     } else if ($request->getMethod() == 'PUT') {
       // Update the tripname
+      // NOTE: tripName must be passed as x-www-form-urlencoded
       $tripName = $request->getParsedBody()['tripName'];
 
       $newHeader = $response->withHeader('Content-type', 'application/json');
       $body = $response->getBody();
-      $db->setTripName($tripId, $tripName);
+      $result = $db->setTripName($tripId, $tripName);
     }
+
+    $db->closeConnection();
     return $response;
   });
 
@@ -47,6 +51,7 @@
     $body = $response->getBody();
     $body->write($db->removeFlight($tripId, $flightId));
 
+    $db->closeConnection();
     return $response;
   });
 
@@ -71,6 +76,8 @@
       $result = $db->addFlight($tripId, $start, $dest);
       $body->write($result);
     }
+
+    $db->closeConnection();
     return $response;
   });
 

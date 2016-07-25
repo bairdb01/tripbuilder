@@ -9,15 +9,6 @@
       $this->conn = $db->connect();
     }
 
-    // Converts the database results to a standard array
-    function resultToJSON($result) {
-      $rows = array();
-      while ($row = pg_fetch_assoc($result)){
-          $rows[] = $row;
-      }
-      return json_encode($rows, JSON_PRETTY_PRINT);
-    }
-
     // Returns an array of all the airports alphabetically; False on failure
     function getAirports(){
       $query = "SELECT airport, code FROM iata_airport_codes
@@ -60,6 +51,7 @@
                 WHERE tripId = $tripId AND
                       flightId = $flightId";
       $result = pg_query($this->conn, $query);
+      $result = successJSON($result);
       return $this->resultToJSON($result);
     }
 
@@ -68,9 +60,25 @@
       $query = "UPDATE trips SET name = '$name'
                 WHERE id = $tripId";
       $result = pg_query($this->conn, $query);
+      $result = successJSON($result);
       return $this->resultToJSON($result);
     }
 
+    // Converts the database results to a standard array
+    function resultToJSON($result) {
+      $rows = array();
+      while ($row = pg_fetch_assoc($result)){
+          $rows[] = $row;
+      }
+      return json_encode($rows, JSON_PRETTY_PRINT);
+    }
+
+    function successJSON($result){
+      $val = array();
+      $val[] = ($result ? true : false);
+      return $val;
+    }
+    
     // Close the database connection
     function closeConnection(){
       pg_close($this->conn);
