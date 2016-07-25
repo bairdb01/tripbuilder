@@ -39,7 +39,7 @@
 
       $newHeader = $response->withHeader('Content-type', 'application/json');
       $body = $response->getBody();
-      $body->write($db->setTripName($tripId, $tripName));
+      $db->setTripName($tripId, $tripName);
     // }
     return $response;
   });
@@ -77,6 +77,7 @@
       $newHeader = $response->withHeader('Content-type', 'application/json');
       $body = $response->getBody();
       $result = $db->addFlight($tripId, $start, $dest);
+      $body->write($result);
     }
     return $response;
   });
