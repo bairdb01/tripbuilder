@@ -10,7 +10,8 @@
 
   $app->get('/api/trip/edit/getAirports', function($request, $response) use($app){
     // $response["Content-Type"] = "application/json";
-    $response->body("HI");
+    $body = $response->getBody();
+    $body->write("Hello");
     return $response;
   });
 
