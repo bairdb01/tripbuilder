@@ -9,22 +9,20 @@
       $this->conn = $db->connect();
     }
 
-    // Returns a trip's name based on a given user id and trip id
+    // Returns a trip's name based on a given user id and trip id; False on failure
     function getTripName($owner, $tripId) {
       $query = "SELECT name FROM trips
                 WHERE trips.id = $tripId and
                       trips.owner = '$owner'";
-      $result = pg_query($query)
-        or die('Query failed: ' . pg_last_error());
+      $result = pg_query($query);
       return $result;
     }
 
-    // Returns flights which correspond with a trip id
+    // Returns flights which correspond with a trip id; False on failure
     function getFlights($tripId) {
       $query = "SELECT * FROM flights
                 INNER JOIN trips on flights.tripId = $tripId";
-      $result = pg_query($query)
-        or die('Query failed: ' . pg_last_error());
+      $result = pg_query($query);
       return $result;
     }
 
@@ -56,14 +54,11 @@
       return pg_update($db, "trips", $newName, $condition);
     }
 
-    // Returns an array of all the airports alphabetically
+    // Returns an array of all the airports alphabetically; False on failure
     function getAirports(){
       $query = "SELECT airport FROM iata_airport_codes
                 ORDER BY airport";
       $result = pg_query($query);
-      if (!$result) {
-        echo "An error has occured";
-      }
       return $result;
     }
   }
