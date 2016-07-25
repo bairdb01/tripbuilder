@@ -28,7 +28,7 @@
       return $response;
     });
 
-    $app->put('/api/trips/{tripId}/newName', function ($request, $resonse) use($app){
+    $app->put('/api/trips/{tripId}/newName', function ($request, $response) use($app){
     // } else if ($request->getMethod() == 'PUT') {
       $db = new DbHandler();
       $route = $request->getAttribute('route');
