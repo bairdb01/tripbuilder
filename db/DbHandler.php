@@ -37,9 +37,11 @@
 
     // Returns True on successful add
     function addFlight($tripId, $start, $dest){
-      $row["tripId"]=$tripId;
-      $row["start"]=$start;
-      $row["dest"]=$dest;
+      $row = array(
+        "tripId"=>$tripId,
+        "start"=>$start,
+        "dest"=>$dest
+      );
 
       echo $row["tripId"];
       $res = pg_insert($this->conn, "flights", $rows);
