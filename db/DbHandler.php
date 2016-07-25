@@ -14,7 +14,7 @@
       $query = "SELECT airport, code FROM iata_airport_codes
                 ORDER BY airport";
       $result = pg_query($this->conn, $query);
-      return convertResultToArray($result);
+      return resultToJSON($result);
     }
 
     // Returns a trip's name based on a trip id; False on failure
@@ -23,7 +23,7 @@
                 WHERE trips.id = $tripId and
                       trips.owner = '$owner'";
       $result = pg_query($this->conn, $query);
-      return convertResultToArray($result);
+      return resultToJSON($result);
     }
 
     // Returns flights which correspond with a trip id; False on failure
@@ -32,7 +32,7 @@
                 WHERE tripId = $tripId
                 ORDER BY flightId";
       $result = pg_query($this->conn, $query);
-      return convertResultToArray($result);
+      return resultToJSON($result);
     }
 
     // Adds a flight to a trip; Returns false on failure
@@ -40,7 +40,7 @@
       $query = "INSERT INTO flights (tripId, start, dest)
                 VALUES ($tripId, '$start', '$dest')";
       $result = pg_query($this->conn, $query);
-      return convertResultToArray($result);
+      return resultToJSON($result);
     }
 
     // Removes a flight from a trip; Returns false on failure
@@ -49,7 +49,7 @@
                 WHERE tripId = $tripId AND
                       flightId = $flightId";
       $result = pg_query($this->conn, $query);
-      return convertResultToArray($result);
+      return resultToJSON($result);
     }
 
     // Updates a trips name; Returns false on failure
@@ -57,7 +57,7 @@
       $query = "UPDATE trips SET name = '$name'
                 WHERE id = $tripId";
       $result = pg_query($this->conn, $query);
-      return convertResultToArray($result);
+      return resultToJSON($result);
     }
 
     // Close the database connection
@@ -66,12 +66,12 @@
     }
 
     // Converts the database results to a standard array
-    function convertResultToJSON($result) {
+    function resultToJSON($result) {
       $rows = [];
       while ($row = pg_fetch_array($result, null, PGSQL_ASSOC)){
           $rows = $row;
       }
-      return json_encode($rows);
+      return json_encode($rows, JSON_PRETTY_PRINT);
     }
   }
 ?>
