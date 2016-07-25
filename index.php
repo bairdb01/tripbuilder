@@ -38,19 +38,18 @@
 
 
   $app->post('api/trip/{tripId}/addFlight', function ($request, $response) use($app){
-    return "Hello";
-    // $db = new DbHandler();
-    // $route = $request->getAttribute('route');
-    // $tripId = $route->getArgument('tripId');
-    // $locations[] = $parsedBody = $request->getParsedBody();
-    //
-    // $newHeader = $response->withHeader('Content-type', 'text/html');
-    // $body = $response->getBody();
-    // $result = $db->addFlight($tripId, $locations[0], $locations[1]);
-    // if ($result)
-    //   $body->write("True");
-    // $body->write("False");
-    // return $response;
+    $db = new DbHandler();
+    $route = $request->getAttribute('route');
+    $tripId = $route->getArgument('tripId');
+    $locations[] = $parsedBody = $request->getParsedBody();
+
+    $newHeader = $response->withHeader('Content-type', 'text/html');
+    $body = $response->getBody();
+    $result = $db->addFlight($tripId, $locations[0], $locations[1]);
+    if ($result)
+      $body->write("True");
+    $body->write("False");
+    return $response;
   });
   $app->run();
 ?>
