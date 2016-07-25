@@ -42,7 +42,8 @@
         "start"=>'$start',
         "dest"=>'$dest'
       );
-      return pg_insert($db, "flights", $row);
+      $vals = pg_convert($db, "flights", $row);
+      return pg_insert($db, "flights", $vals);
     }
 
     // Returns True on successful removal
