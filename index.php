@@ -5,7 +5,7 @@
   echo "Hello World";
 
   $db = new DbHandler();
-  addFlight(3, "rome", "brussels");
+  $db->addFlight(3, "rome", "brussels");
   $result = $db->getFlights(3);
   echo "</br>";
   echo pg_num_rows($result);
