@@ -70,6 +70,7 @@
       while ($row = pg_fetch_assoc($result)){
           $rows[] = $row;
       }
+      $this->freeResults($result);
       return json_encode($rows, JSON_PRETTY_PRINT);
     }
 
@@ -82,6 +83,11 @@
     // Close the database connection
     function closeConnection(){
       pg_close($this->conn);
+    }
+
+    // Free results
+    function freeResult($result){
+      pg_free_result($result);
     }
   }
 ?>
