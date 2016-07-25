@@ -23,7 +23,7 @@
       $query = "SELECT airport, code FROM iata_airport_codes
                 ORDER BY airport";
       $result = pg_query($this->conn, $query);
-      return $this->$this->resultToJSON($result);
+      return $this->resultToJSON($result);
     }
 
     // Returns a trip's name based on a trip id; False on failure
