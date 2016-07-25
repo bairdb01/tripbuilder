@@ -55,7 +55,7 @@
 
   $app->map(['GET', 'POST'], '/api/trips/{tripId}/flights', function ($request, $response) use($app){
     $db = new DbHandler();
-    if ($response->getMethod() == 'GET') {
+    if ($request->getMethod() == 'GET') {
       // Retrieve list of flights for a trip
       $route = $request->getAttribute('route');
       $tripId = $route->getArgument('tripId');
@@ -64,7 +64,7 @@
       $body = $response->getBody();
       $body->write($db->getFlights($tripId));
 
-    } else if ($response->getMethod() == 'POST'){
+    } else if ($request->getMethod() == 'POST'){
       // Add a flight to a trip
       $route = $request->getAttribute('route');
       $tripId = $route->getArgument('tripId');
