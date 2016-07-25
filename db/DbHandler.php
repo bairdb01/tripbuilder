@@ -74,7 +74,7 @@
       return json_encode($rows, JSON_PRETTY_PRINT);
     }
 
-    function $this->successJSON($result){
+    function successJSON($result){
       $val = array();
       $val["success"] = ($result) ? true : false;
       return $val;
