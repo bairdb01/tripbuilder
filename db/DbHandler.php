@@ -39,8 +39,8 @@
     function addFlight($tripId, $start, $dest){
       $row = array(
         "tripId"=>$tripId,
-        "start"=>$start,
-        "dest"=>$dest
+        "start"=>'$start',
+        "dest"=>'$dest'
       );
       return pg_insert($db, "flights", $row);
     }
