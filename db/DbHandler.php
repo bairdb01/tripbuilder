@@ -61,7 +61,9 @@
       $query = "SELECT airport FROM iata_airport_codes
                 ORDER BY airport";
       $result = pg_query($query)
-        or die('Query failed: ' . pg_last_error());
+      if (!$result) {
+        echo "An error has occured";
+      }
       return $result;
     }
   }
