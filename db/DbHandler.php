@@ -30,20 +30,29 @@
 
     // Returns True on successful add
     function addFlight($tripId, $start, $dest){
-      $row = ("tripId"=>$tripId, "start"=>$start, "dest"=>$dest)
+      $row = array(
+        "tripId"=>$tripId,
+        "start"=>$start,
+        "dest"=>$dest
+      )
       return pg_insert($db, "flights", $row)
     }
 
     // Returns True on successful removal
     function removeFlight($tripId, $flightId) {
-      $row = ("tripId"=>$tripId, "flightId"=>$flightId);
+      $row = array(
+        "tripId"=>$tripId,
+        "flightId"=>$flightId
+      );
       return pg_delete($db, "flights", $row);
     }
 
     // Returns True on successful update of a tripname
     function updateTripName($tripId, $name){
       $newName = ("name"=>$name);
-      $condition = ("tripId"=>$tripId);
+      $condition = array(
+        "tripId"=>$tripId
+      );
       return pg_update($db, "trips", $newName, $condition);
     }
 
