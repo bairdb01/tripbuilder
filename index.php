@@ -4,14 +4,13 @@
   use Psr\Http\Message\ServerRequestInterface;
   use Psr\Http\Message\ResponseInterface;
 
-  $db = new DbHandler();
-
   $app = new \Slim\App();
 
   $app->get('/api/trip/edit/getAirports', function($request, $response) use($app){
-
+    $db = new DbHandler();
     $newHeader = $response->withHeader('Content-type', 'application/json');
-    $body = $response->getBody()->write($db->getAirports());
+    $body = $response->getBody()
+    body->write($db->getAirports());
     return $response;
   });
 
