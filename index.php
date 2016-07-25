@@ -14,6 +14,23 @@
     return $response;
   });
 
+  $app->post('api/trip/{tripId}/addFlight', function ($request, $response) use($app){
+    $db = new DbHandler();
+    $route = $request->getAttribute('route');
+    $tripId = $route->getArgument('tripId');
+    $locations[] = $parsedBody = $request->getParsedBody();
+
+    echo $locations[0];
+
+    $newHeader = $response->withHeader('Content-type', 'text/html');
+    $body = $response->getBody();
+    $result = $db->addFlight($tripId, $locations[0], $locations[1]);
+    if ($result)
+      $body->write("True");
+    $body->write("False");
+    return $response;
+  });
+
   $app->get('/api/trip/{tripId}/tripName', function ($request, $response) use($app){
     $db = new DbHandler();
     $route = $request->getAttribute('route');
@@ -37,21 +54,5 @@
   });
 
 
-  $app->post('api/trip/{tripId}/addFlight', function ($request, $response) use($app){
-    $db = new DbHandler();
-    $route = $request->getAttribute('route');
-    $tripId = $route->getArgument('tripId');
-    $locations[] = $parsedBody = $request->getParsedBody();
-
-    echo $locations[0];
-
-    $newHeader = $response->withHeader('Content-type', 'text/html');
-    $body = $response->getBody();
-    $result = $db->addFlight($tripId, $locations[0], $locations[1]);
-    if ($result)
-      $body->write("True");
-    $body->write("False");
-    return $response;
-  });
   $app->run();
 ?>
