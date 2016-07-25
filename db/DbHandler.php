@@ -35,7 +35,7 @@
         "start"=>$start,
         "dest"=>$dest
       )
-      return pg_insert($db, "flights", $row)
+      return pg_insert($db, "flights", $row);
     }
 
     // Returns True on successful removal
