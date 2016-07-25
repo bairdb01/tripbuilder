@@ -38,9 +38,11 @@
 
 
   $app->post('api/trip/{tripId}/addFlight/', function ($request, $response) use($app){
-    $locations = array();
     $db = new DbHandler();
+    $route = $request->getAttribute('route');
+    $tripId = $route->getArgument('tripId');
     $parsedBody = $request->getParsedBody();
+    $locations = array();
     parse_str($parsedBody, $locations);
 
 
