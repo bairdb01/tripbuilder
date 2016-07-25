@@ -86,7 +86,7 @@
     }
 
     // Free results
-    function freeResult($result){
+    function freeResults($result){
       pg_free_result($result);
     }
   }
