@@ -13,7 +13,7 @@
     function getTripName($owner, $tripId) {
       $query = "SELECT name FROM trips
                 WHERE trips.id = $id and
-                      trips.owner = $owner"g;
+                      trips.owner = $owner";
       $result = pg_query($query)
         or die('Query failed: ' . pg_last_error());
       return $result;
