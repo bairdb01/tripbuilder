@@ -42,8 +42,8 @@
         "start"=>'$start',
         "dest"=>'$dest'
       );
-      echo pg_last_error();
-      return pg_insert($db, "flights", $row);
+
+      return pg_insert($this->conn, "flights", $row);
     }
 
     // Returns True on successful removal
@@ -52,7 +52,7 @@
         "tripId"=>$tripId,
         "flightId"=>$flightId
       );
-      return pg_delete($db, "flights", $row);
+      return pg_delete($this->conn, "flights", $row);
     }
 
     // Returns True on successful update of a tripname
@@ -61,7 +61,7 @@
       $condition = array(
         "tripId"=>$tripId
       );
-      return pg_update($db, "trips", $newName, $condition);
+      return pg_update($this->conn, "trips", $newName, $condition);
     }
   }
 ?>
