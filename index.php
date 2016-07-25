@@ -1,6 +1,8 @@
 <?php
   require_once ('db/DbHandler.php');
   require ('vendor/autoload.php');
+  use Psr\Http\Message\ServerRequestInterface;
+  use Psr\Http\Message\ResponseInterface;
 
   $db = new DbHandler();
 
