@@ -37,7 +37,7 @@
   });
 
 
-  $app->post('api/trip/{tripId}/addFlight/', function ($request, $response) use($app){
+  $app->get('api/trip/{tripId}/addFlight/', function ($request, $response) use($app){
     $db = new DbHandler();
     $route = $request->getAttribute('route');
     $tripId = $route->getArgument('tripId');
