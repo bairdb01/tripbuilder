@@ -48,7 +48,7 @@
     $result = $db->addFlight($tripId, $locations[0], $locations[1]);
     if ($result)
       $body->write("True");
-    body->write("False");
+    $body->write("False");
     return $response;
   });
   $app->run();
