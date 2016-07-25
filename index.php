@@ -11,7 +11,7 @@
   $app->get('/api/trip/edit/getAirports', function($request, $response) use($app){
 
     $newHeader = $response->withHeader('Content-type', 'application/json');
-    $body = $response->write($db->getAirports());
+    $body = $response->getBody()->write($db->getAirports());
     return $response;
   });
 
