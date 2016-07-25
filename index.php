@@ -43,9 +43,12 @@
     $tripId = $route->getArgument('tripId');
     $locations[] = $parsedBody = $request->getParsedBody();
 
-    $newHeader = $response->withHeader('Content-type', 'application/json');
+    $newHeader = $response->withHeader('Content-type', 'text/html');
     $body = $response->getBody();
-    $body->write($db->addFlight($tripId, $locations[0], $locations[1]));
+    $result = $db->addFlight($tripId, $locations[0], $locations[1])
+    if ($result)
+      $body->write("True");
+    body->write("False");
     return $response;
   });
   $app->run();
