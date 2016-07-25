@@ -37,7 +37,7 @@
   });
 
 
-  $app->post('api/trip/{tripId}/flight/', function ($request, $response) use($app){
+  $app->post('api/trip/{tripId}/addFlight/', function ($request, $response) use($app){
     $db = new DbHandler();
     $parsedBody = $request->getParsedBody();
     parse_str($parsedBody);
