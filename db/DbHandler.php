@@ -20,8 +20,9 @@
 
     // Returns flights which correspond with a trip id; False on failure
     function getFlights($tripId) {
-      $query = "SELECT * FROM flights
-                INNER JOIN trips on flights.tripId = $tripId";
+      $query = "SELECT start, dest FROM flights
+                WHERE tripId = $tripId
+                ORDER BY flightId";
       $result = pg_query($query);
       return $result;
     }
