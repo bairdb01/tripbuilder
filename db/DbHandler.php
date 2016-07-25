@@ -43,9 +43,7 @@
         'dest'=>$dest
       );
 
-      $vals = pg_convert($this->conn,"flights", $row);
-echo $vals[start];
-      $res = pg_insert($this->conn, "flights", $vals);
+      $res = pg_insert($this->conn, "flights", $rows);
       echo $res;
       return;
     }
