@@ -5,7 +5,7 @@
   echo "Hello World";
 
   $db = new DbHandler();
-  $db->addFlight(3, "brussels", "madrid");
+  $db->removeFlight(3, 6);
 
   $result = $db->getFlights(3);
   echo "</br>";
