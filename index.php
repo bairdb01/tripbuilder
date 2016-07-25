@@ -42,13 +42,10 @@
     $route = $request->getAttribute('route');
     $tripId = $route->getArgument('tripId');
     $parsedBody = $request->getParsedBody();
-    $locations = array();
-    parse_str($parsedBody, $locations);
-
 
     $newHeader = $response->withHeader('Content-type', 'application/json');
     $body = $response->getBody();
-    $body->write($db->addFlight($tripId, $locations[0], $locations[1]));
+    $body->write($db->addFlight($tripId, $start, $dest));
     return $response;
   });
   $app->run();
