@@ -1,5 +1,5 @@
 <?php
-  class DbConnnect {
+  class DbConnect {
     private $conn;
 
     function __construct(){
