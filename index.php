@@ -39,7 +39,7 @@
     return $response;
   });
 
-  $app->delete('/api/trip/{tripId}/flights/{flightId}', function ($request, $response) use($app){
+  $app->delete('/api/trips/{tripId}/flights/{flightId}', function ($request, $response) use($app){
     // Delete a flight from a trip
     $db = new DbHandler();
     $route = $request->getAttribute('route');
