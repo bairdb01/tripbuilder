@@ -33,7 +33,7 @@
 
       $newHeader = $response->withHeader('Content-type', 'application/json');
       $body = $response->getBody();
-      body->write($db->setTripName($tripId, $tripName));
+      $body->write($db->setTripName($tripId, $tripName));
     }
 
     $db->closeConnection();
