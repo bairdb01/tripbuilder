@@ -13,7 +13,7 @@
     function resultToJSON($result) {
       $rows = [];
       while ($row = pg_fetch_array($result, null, PGSQL_ASSOC)){
-          $rows = $row;
+          $rows[] .= $row;
       }
       return json_encode($rows, JSON_PRETTY_PRINT);
     }
