@@ -37,15 +37,18 @@
 
     // Returns True on successful add
     function addFlight($tripId, $start, $dest){
-      $row = array(
-        "tripId"=>$tripId,
-        "start"=>$start,
-        "dest"=>$dest
-      );
-
-      pg_insert($this->conn, "flights", $row);
-      echo pg_last_error($this->conn);
-      return;
+      // $row = array(
+      //   "tripId"=>$tripId,
+      //   "start"=>$start,
+      //   "dest"=>$dest
+      // );
+      $query = "INSERT INTO flights (tripId, start, dest)
+                VALUES ($tripId, '$start', '$dest')";
+      $result = pg_query($query);
+      return $result;
+      // pg_insert($this->conn, "flights", $row);
+      // echo pg_last_error($this->conn);
+      // return;
     }
 
     // Returns True on successful removal
