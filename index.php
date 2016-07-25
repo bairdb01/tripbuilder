@@ -39,8 +39,7 @@
     return $response;
   });
 
-
-  $app->map(['GET', 'POST']'/api/trips/{tripId}/flights', function ($request, $response) use($app){
+  $app->map(['GET', 'POST'], '/api/trips/{tripId}/flights', function ($request, $response) use($app){
     $db = new DbHandler();
     if ($response->getMethod() == 'GET') {
       // Retrieve list of flights for a trip
@@ -78,49 +77,6 @@
 
     return $response;
   });
-
-
-  // $app->post('api/trip/{tripId}/flight', function ($request, $response) use($app){
-  //   $db = new DbHandler();
-  //   $route = $request->getAttribute('route');
-  //   $tripId = $route->getArgument('tripId');t
-  //   $start = $request->getParsedBody()['start'];
-  //   $dest = $request->getParsedBody()['dest'];
-  //
-  //   $newHeader = $response->withHeader('Content-type', 'text/html');
-  //   $body = $response->getBody();
-  //   $result = $db->addFlight($tripId, $start, $dest);
-  //   if ($result)
-  //     $body->write("True");
-  //   $body->write("False");
-  //   return $response;
-  // });
-
-  // $app->put('/api/trip/{tripId}/trip', function ($request, $response) use($app){
-  //   $db = new DbHandler();
-  //   $route = $request->getAttribute('route');
-  //   $tripId = $route->getArgument('tripId');
-  //   $tripName = $request->getParsedBody()['tripName'];
-  //
-  //   $newHeader = $response->withHeader('Content-type', 'application/json');
-  //   $body = $response->getBody();
-  //   $body->write($db->setTripName($tripId, $tripName));
-  //   return $response;
-  // });
-
-  // $app->delete('/api/trip/{tripId}/flight', function ($request, $response) use($app){
-  //   $db = new DbHandler();
-  //   $route = $request->getAttribute('route');
-  //   $tripId = $route->getArgument('tripId');
-  //   $flightId = $request->getParsedBody()['tripName'];
-  //
-  //   $newHeader = $response->withHeader('Content-type', 'application/json');
-  //   $body = $response->getBody();
-  //   $body->write($db->removeFlight($tripId, $flightId));
-  //   return $response;
-  // });
-
-
 
   $app->run();
 ?>
