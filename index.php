@@ -5,11 +5,12 @@
   echo "Hello World";
 
   $db = new DbHandler();
+  addFlight(3, "rome", "brussels")
   $result = $db->getFlights(3);
   echo "</br>";
   echo pg_num_rows($result);
   echo "</br>";
-  
+
   echo "<table>";
   while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)){
     echo "<tr>";

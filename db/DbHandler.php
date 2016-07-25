@@ -9,6 +9,14 @@
       $this->conn = $db->connect();
     }
 
+    // Returns an array of all the airports alphabetically; False on failure
+    function getAirports(){
+      $query = "SELECT airport FROM iata_airport_codes
+                ORDER BY airport";
+      $result = pg_query($query);
+      return $result;
+    }
+
     // Returns a trip's name based on a given user id and trip id; False on failure
     function getTripName($owner, $tripId) {
       $query = "SELECT name FROM trips
@@ -53,14 +61,6 @@
         "tripId"=>$tripId
       );
       return pg_update($db, "trips", $newName, $condition);
-    }
-
-    // Returns an array of all the airports alphabetically; False on failure
-    function getAirports(){
-      $query = "SELECT airport FROM iata_airport_codes
-                ORDER BY airport";
-      $result = pg_query($query);
-      return $result;
     }
   }
 ?>
