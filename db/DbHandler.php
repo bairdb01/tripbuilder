@@ -10,7 +10,7 @@
     }
 
     // Converts the database results to a standard array
-    function $this->resultToJSON($result) {
+    function resultToJSON($result) {
       $rows = [];
       while ($row = pg_fetch_array($result, null, PGSQL_ASSOC)){
           $rows = $row;
