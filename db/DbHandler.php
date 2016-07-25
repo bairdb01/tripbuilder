@@ -46,7 +46,7 @@
     // Returns True on successful removal
     function removeFlight($tripId, $flightId) {
       $query = "DELETE FROM flights
-                WHERE tripdId = $tripId AND
+                WHERE tripId = $tripId AND
                       flightId = $flightId";
       $result = pg_query($this->conn, $query);
       return $result;

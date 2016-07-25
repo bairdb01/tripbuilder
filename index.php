@@ -5,7 +5,7 @@
   echo "Hello World";
 
   $db = new DbHandler();
-  echo $db->getTripName(3);
+  echo $db->getTripName("ben", 3);
 
   $db->removeFlight(3, 6);
 
