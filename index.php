@@ -45,7 +45,7 @@
 
     $newHeader = $response->withHeader('Content-type', 'text/html');
     $body = $response->getBody();
-    $result = $db->addFlight($tripId, $locations[0], $locations[1])
+    $result = $db->addFlight($tripId, $locations[0], $locations[1]);
     if ($result)
       $body->write("True");
     body->write("False");
