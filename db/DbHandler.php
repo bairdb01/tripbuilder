@@ -51,7 +51,7 @@
                 WHERE tripId = $tripId AND
                       flightId = $flightId";
       $result = pg_query($this->conn, $query);
-      $result = successJSON($result);
+      $result = $this->successJSON($result);
       return json_encode($result, JSON_PRETTY_PRINT);;
     }
 
@@ -60,7 +60,7 @@
       $query = "UPDATE trips SET name = '$name'
                 WHERE id = $tripId";
       $result = pg_query($this->conn, $query);
-      $result = successJSON($result);
+      $result = $this->successJSON($result);
       return json_encode($result, JSON_PRETTY_PRINT);;
     }
 
@@ -74,7 +74,7 @@
       return json_encode($rows, JSON_PRETTY_PRINT);
     }
 
-    function successJSON($result){
+    function $this->successJSON($result){
       $val = array();
       $val["success"] = ($result) ? true : false;
       return $val;
