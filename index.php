@@ -44,7 +44,8 @@
     echo $start . $dest;
     $newHeader = $response->withHeader('Content-type', 'application/json');
     $body = $response->getBody();
-    $body->write($db->addFlight($tripId, $start, $dest));
+    // $body->write($db->addFlight($tripId, $start, $dest));
+    $body->write($start);
     return $response;
   });
   $app->run();
