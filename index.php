@@ -6,7 +6,7 @@
 
   $app = new \Slim\App();
 
-  $app->get('/api/getAirports', function($request, $response) use($app){
+  $app->get('/api/airports', function($request, $response) use($app){
     $db = new DbHandler();
     $newHeader = $response->withHeader('Content-type', 'application/json');
     $body = $response->getBody();
