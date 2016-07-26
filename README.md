@@ -8,7 +8,7 @@ An airlines trip planner API, which supports the following requests:
 
   - Add a flight to a trip
 
-  POST /api/trips/3/flights HTTP/1.1
+  POST /api/trips/3/flights HTTP/1.1  
   Content-Type:   application/x-www-form-urlencoded  
 
   start=London&dest=Paris
@@ -20,7 +20,7 @@ An airlines trip planner API, which supports the following requests:
       GET /api/trips/{tripId}
 
   - Rename a trip
-    PUT /api/trips/{tripId}
+    PUT /api/trips/{tripId}  
     Content-Type:   application/x-www-form-urlencoded  
 
     name=NewName  
