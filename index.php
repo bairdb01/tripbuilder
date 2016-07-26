@@ -82,13 +82,15 @@
 
   // Validate that authorized person is using the api
   $app->add(new \Slim\Middleware\JwtAuthentication([
-      "secret" => "7y094f1FkHPsQ0VoFKkw4kMQ15Fd1j45",
-      "error" => function ($request, $response, $arguments) {
-          $data["status"] = "error";
-          $data["message"] = $arguments["message"];
-          return $response
-              ->withHeader("Content-Type", "application/json")
-              ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+    "path" => "/",
+    "secure" => false,
+    "secret" => "7y094f1FkHPsQ0VoFKkw4kMQ15Fd1j45",
+    "error" => function ($request, $response, $arguments) {
+        $data["status"] = "error";
+        $data["message"] = $arguments["message"];
+        return $response
+            ->withHeader("Content-Type", "application/json")
+            ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
       }
   ]));
 
