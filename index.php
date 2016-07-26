@@ -24,7 +24,7 @@
       // Retrieve the tripname
       $newHeader = $response->withHeader('Content-type', 'application/json');
       $body = $response->getBody();
-      $body->write($db->getTripName($tripId));
+      $body->write($db->getTrip($tripId));
 
     } else if ($request->getMethod() == 'PUT') {
       // Update the tripname
