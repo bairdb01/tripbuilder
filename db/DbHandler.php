@@ -37,6 +37,8 @@
     // Adds a flight to a trip;
     // Returns flightId of the added flight; false on failure
     function addFlight($tripId, $start, $dest){
+      $start = pg_escape_string($start);
+      $dest = pg_escape_string($dest);
       $query = "INSERT INTO flights (tripId, start, dest)
                 VALUES ($tripId, '$start', '$dest')
                 RETURNING flightid";
@@ -57,6 +59,7 @@
 
     // Updates a trips name; Returns false on failure
     function setTripName($tripId, $name){
+      $name = pg_escape_string($name);
       $query = "UPDATE trips SET name = '$name'
                 WHERE id = $tripId";
       $result = pg_query($this->conn, $query);
