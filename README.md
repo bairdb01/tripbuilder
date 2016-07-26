@@ -2,27 +2,36 @@
 An airlines trip planner API, which supports the following requests:  
   - Gets a list of all airports (Alphabetically)  
     GET /api/airports
-
-  - List all flights for a trip, returns JSON [{"airportName", "airportCode"}]
-    GET /api/trips/{tripId}
-
-  - Add a flight to a trip, returns JSON [{"success" : boolean}]  
-  POST /api/trips/3/flights HTTP/1.1  
-  Content-Type:   application/x-www-form-urlencoded  
-  start=London&dest=Paris  
-
-  - Remove a flight from a trip  , returns JSON [{"success" : boolean}]
-    DELETE /api/trips/{tripId}/flights/{flightIdToRemove}
-
-  - Gets trip name, returns JSON [{"name": "tripName", "id": int}]
+      
+    returns JSON [{"airportName", "airportCode"}]  
+  
+  - List all flights for a trip  
       GET /api/trips/{tripId}
-
-  - Rename a trip, returns JSON [{"success": boolean}]  
-    PUT /api/trips/{tripId}  
-    Content-Type:   application/x-www-form-urlencoded  
-
-    name=NewName  
-
+  
+      returns JSON [{"flightid": "2", "start": "paris", "dest": "london"}]  
+  
+  - Add a flight to a trip
+      POST /api/trips/3/flights HTTP/1.1  
+      Content-Type:   application/x-www-form-urlencoded  
+      start=London&dest=Paris  
+        
+      returns JSON [{"success": boolean}]  
+  
+  - Remove a flight from a trip  
+      DELETE /api/trips/{tripId}/flights/{flightIdToRemove}  
+      returns JSON [{"success" : boolean}]  
+  
+  - Gets trip name  
+      GET /api/trips/{tripId}  
+      returns JSON [{"name": "tripName", "id": int}]  
+  
+  - Rename a trip  
+      PUT /api/trips/{tripId}  
+      Content-Type:   application/x-www-form-urlencoded  
+      name=NewName  
+      
+    returns JSON [{"success": boolean}]  
+  
 ###Installation
   Make sure to have at least PHP v5.4.3
   Deploy trip_builder on an Apache2 server
