@@ -7,6 +7,7 @@
   $app = new \Slim\App();
 
   $app->get('/api/airports', function($request, $response) use($app){
+    // Get list of all airports in alphabetical order
     $db = new DbHandler();
     $newHeader = $response->withHeader('Content-type', 'application/json');
     $body = $response->getBody();
