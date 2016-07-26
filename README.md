@@ -1,26 +1,26 @@
 ###README
 An airlines trip planner API, which supports the following requests:  
-  - Gets a list of all airports (Alphabetically)
+  - Gets a list of all airports (Alphabetically)  
     GET /api/airports
 
-  - List all flights for a trip
+  - List all flights for a trip  
     GET /api/trips/{tripId}
 
   - Add a flight to a trip
 
-  POST /api/trips/3/flights HTTP/1.1
+  POST /api/trips/3/flights HTTP/1.1  
   Content-Type:   application/x-www-form-urlencoded  
 
   start=London&dest=Paris
 
-  - Remove a flight from a trip
+  - Remove a flight from a trip  
     DELETE /api/trips/{tripId}/flights/{flightIdToRemove}
 
-  - Gets trip name
+  - Gets trip name  
       GET /api/trips/{tripId}
 
   - Rename a trip
-    PUT /api/trips/{tripId}
+    PUT /api/trips/{tripId}  
     Content-Type:   application/x-www-form-urlencoded  
 
     name=NewName  
@@ -31,7 +31,7 @@ An airlines trip planner API, which supports the following requests:
     - Make sure to Allow .htaccess files through AllowOverride all in the apache.conf
   By default all requests will be routed to index.php
 
-  Utilizes Composer to manage php packages
+  Utilizes Composer to manage php packages (e.g. Slim)  
     php composer.phar  
 
 ###Testing
