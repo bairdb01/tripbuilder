@@ -10,7 +10,7 @@ An airlines trip planner API, which supports the following requests:
   
       returns JSON [{"flightid": "2", "start": "paris", "dest": "london"}]  
   
-  - Add a flight to a trip
+  - Add a flight to a trip  
       POST /api/trips/3/flights HTTP/1.1  
       Content-Type:   application/x-www-form-urlencoded  
       start=London&dest=Paris  
