@@ -31,7 +31,7 @@ An airlines trip planner API, which supports the following requests:
     - Make sure to Allow .htaccess files through AllowOverride all in the apache.conf
   By default all requests will be routed to index.php
 
-  Utilizes Composer to manage php packages  (e.g. Slim)
+  Utilizes Composer to manage php packages (e.g. Slim)  
     php composer.phar  
 
 ###Testing
