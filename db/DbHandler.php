@@ -18,8 +18,8 @@
     }
 
     // Returns a trip's name based on a trip id; False on failure
-    function getTripName($tripId) {
-      $query = "SELECT name FROM trips
+    function getTrip($tripId) {
+      $query = "SELECT name, id FROM trips
                 WHERE trips.id = $tripId";
       $result = pg_query($this->conn, $query);
       return $this->resultToJSON($result);
