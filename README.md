@@ -1,9 +1,9 @@
 ###README
 An airlines trip planner API, which supports the following requests:  
-  - Gets a list of all airports (Alphabetically)
+  - Gets a list of all airports (Alphabetically)  
     GET /api/airports
 
-  - List all flights for a trip
+  - List all flights for a trip  
     GET /api/trips/{tripId}
 
   - Add a flight to a trip
@@ -13,10 +13,10 @@ An airlines trip planner API, which supports the following requests:
 
   start=London&dest=Paris
 
-  - Remove a flight from a trip
+  - Remove a flight from a trip  
     DELETE /api/trips/{tripId}/flights/{flightIdToRemove}
 
-  - Gets trip name
+  - Gets trip name  
       GET /api/trips/{tripId}
 
   - Rename a trip
