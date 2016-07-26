@@ -28,7 +28,7 @@
 
     } else if ($request->getMethod() == 'PUT') {
       // Update the tripname
-      // NOTE: tripName must be passed as x-www-form-urlencoded
+      // NOTE: name must be passed as x-www-form-urlencoded
       $tripName = $request->getParsedBody()['name'];
 
       $newHeader = $response->withHeader('Content-type', 'application/json');
